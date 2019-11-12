@@ -2,6 +2,8 @@ package com.example.bmikalkulator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,9 +12,11 @@ import android.widget.TextView;
 
 import java.security.PublicKey;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button author;
+    private Button bmiCalculation;
+    private Button viewBmiInfo;
+    private Button viewAuthor;
     private Button search;
     private EditText editText;
 
@@ -21,14 +25,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        author = (Button) findViewById(R.id.calculateBMI);
-        author.setOnClickListener(this);
+        //On click BMI calculation
+        bmiCalculation = (Button) findViewById(R.id.calculateBMI);
+        bmiCalculation.setOnClickListener(view -> {
+            calculateBmi(view);
+        });
+
+
+        viewBmiInfo = (Button) findViewById(R.id.viewBMIInfo);
+        viewBmiInfo.setOnClickListener(view -> {
+            viewBmiInfo(view);
+        });
+
+        viewAuthor = (Button) findViewById(R.id.viewAuthorInfo);
+        viewAuthor.setOnClickListener(this);
+        search = (Button) findViewById(R.id.search);
+        search.setOnClickListener(this);
     }
 
 
 
-    @Override
-    public void onClick(View v) {
+    public void calculateBmi(View view) {
         EditText heightField = findViewById(R.id.heightField);
         EditText weightField = findViewById(R.id.weightField);
         TextView resultField = findViewById(R.id.resultField);
@@ -53,5 +70,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             resultField.setText("NiedowagaTwoje BMI: "+ Double.toString((int)BMI));
 
         }
+    }
+
+    public void viewBmiInfo(View view){
+        Intent buttonIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pl.wikipedia.org/wiki/Wska%C5%BAnik_masy_cia%C5%82a"));
+        startActivity(buttonIntent);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

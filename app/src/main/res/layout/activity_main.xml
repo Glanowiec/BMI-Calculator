@@ -4,49 +4,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00791818"
     tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/heightField"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
-        android:layout_marginTop="272dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
+        android:hint="Wzrost"
         android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/weightField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/resultField" />
 
     <EditText
         android:id="@+id/weightField"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginBottom="51dp"
+        android:layout_marginTop="8dp"
+        android:autoText="false"
         android:ems="10"
+        android:hint="Waga"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/calculateBMI"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/heightField" />
+
+    <EditText
+        android:id="@+id/searchField"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_marginTop="96dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculateBMI" />
 
     <Button
         android:id="@+id/calculateBMI"
         android:layout_width="207dp"
         android:layout_height="47dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="24dp"
         android:text="Oblicz  BMI"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weightField" />
 
+    <Button
+        android:id="@+id/viewBMIInfo"
+        android:layout_width="150dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        android:text="BMI Informacje"
+        app:layout_constraintEnd_toStartOf="@+id/viewAuthorInfo"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculateBMI" />
+
+    <Button
+        android:id="@+id/viewAuthorInfo"
+        android:layout_width="150dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="8dp"
+        android:text="O Autorach"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/viewBMIInfo"
+        app:layout_constraintTop_toBottomOf="@+id/calculateBMI" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="207dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="8dp"
+        android:text="Szukaj"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchField" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="32dp"
         android:text="Kalkulator BMI"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -55,21 +104,21 @@
         android:id="@+id/resultField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="3dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="40dp"
         android:text="Twoje BMI:"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
