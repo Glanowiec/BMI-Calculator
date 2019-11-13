@@ -27,18 +27,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //On click BMI calculation
         bmiCalculation = (Button) findViewById(R.id.calculateBMI);
-        bmiCalculation.setOnClickListener(view -> {
-            calculateBmi(view);
-        });
+        bmiCalculation.setOnClickListener(view -> calculateBmi(view));
 
-
+        //On click - Goes to BMI Wikipedia
         viewBmiInfo = (Button) findViewById(R.id.viewBMIInfo);
-        viewBmiInfo.setOnClickListener(view -> {
-            viewBmiInfo(view);
-        });
+        viewBmiInfo.setOnClickListener(view -> viewBmiInfo(view));
 
+        //
         viewAuthor = (Button) findViewById(R.id.viewAuthorInfo);
-        viewAuthor.setOnClickListener(this);
+        viewAuthor.setOnClickListener(view -> openActivity2());
+
+
         search = (Button) findViewById(R.id.search);
         search.setOnClickListener(this);
     }
@@ -73,8 +72,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void viewBmiInfo(View view){
-        Intent buttonIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pl.wikipedia.org/wiki/Wska%C5%BAnik_masy_cia%C5%82a"));
-        startActivity(buttonIntent);
+        Intent viewBmiIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pl.wikipedia.org/wiki/Wska%C5%BAnik_masy_cia%C5%82a"));
+        startActivity(viewBmiIntent);
+    }
+    //Activity is a screen in android app
+    //Opening screen with webview
+    public void openActivity2(){
+        Intent activity2Intent = new Intent(this, Main2Activity.class);
+        startActivity(activity2Intent);
     }
 
     @Override
