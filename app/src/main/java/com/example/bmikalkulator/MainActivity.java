@@ -3,6 +3,7 @@ package com.example.bmikalkulator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -49,25 +50,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         EditText weightField = findViewById(R.id.weightField);
         TextView resultField = findViewById(R.id.resultField);
 
-        double height = Double.parseDouble(heightField.getText().toString());
-        double weight = Double.parseDouble(weightField.getText().toString());
 
-        double BMI = weight/(height * height)*10000;
+        if(heightField.getText().toString().isEmpty() || weightField.getText().toString().isEmpty()){
+            resultField.setTextColor(Color.RED);
+            resultField.setText("Podaj poprawne wartości");
+        } else {
+            double height = Double.parseDouble(heightField.getText().toString());
+            double weight = Double.parseDouble(weightField.getText().toString());
 
-        if(BMI>25){
+            double BMI = weight / (height * height) * 10000;
 
-            resultField.setText("Nadwaga, Twoje BMI:"+ Double.toString((int)BMI));
+            resultField.setTextColor(Color.GRAY);
 
-        }
-        else if(BMI>20){
+            if (BMI > 25) {
 
-            resultField.setText("PrawidlowawagaTwoje BMI:"+ Double.toString((int)BMI));
+                resultField.setText("Nadwaga, Twoje BMI:" + Double.toString((int) BMI));
 
-        }
-        else {
+            } else if (BMI > 20) {
 
-            resultField.setText("NiedowagaTwoje BMI: "+ Double.toString((int)BMI));
+                resultField.setText("PrawidlowawagaTwoje BMI:" + Double.toString((int) BMI));
 
+            } else {
+
+                resultField.setText("NiedowagaTwoje BMI: " + Double.toString((int) BMI));
+
+            }
         }
     }
 
