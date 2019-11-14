@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         search = (Button) findViewById(R.id.search);
-        search.setOnClickListener(this);
+        search.setOnClickListener(view -> openActivity3());
     }
 
 
@@ -87,6 +87,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void openActivity2(){
         Intent activity2Intent = new Intent(this, Main2Activity.class);
         startActivity(activity2Intent);
+    }
+
+    public void openActivity3(){
+        EditText searchField = findViewById(R.id.searchField);
+        String searchUrl = "https://www.google.com/search?q=" + searchField.getText().toString() + "&cad=h";
+        Intent activity3Intent = new Intent(this, Main3Activity.class);
+        activity3Intent.putExtra("searchUrl", searchUrl);
+        startActivity(activity3Intent);
     }
 
     @Override
