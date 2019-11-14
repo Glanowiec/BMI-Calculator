@@ -22,10 +22,6 @@ public class Main3Activity extends AppCompatActivity {
         Intent i = getIntent();
         String url = i.getStringExtra("searchUrl");
         myBrowser.loadUrl(url);
-        myBrowser.clearView();
-        myBrowser.measure(100, 100);
-        settings.setUseWideViewPort(true);
-        settings.setLoadWithOverviewMode(true);
     }
 
 }
