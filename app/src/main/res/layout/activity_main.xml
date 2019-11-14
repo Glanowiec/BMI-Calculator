@@ -11,7 +11,7 @@
         android:id="@+id/heightField"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="Wzrost"
@@ -38,7 +38,7 @@
         android:id="@+id/searchField"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="Wyszukaj w Google"
         android:inputType="text"
@@ -58,7 +58,7 @@
 
     <Button
         android:id="@+id/viewBMIInfo"
-        android:layout_width="150dp"
+        android:layout_width="140dp"
         android:layout_height="47dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="56dp"
@@ -71,7 +71,7 @@
 
     <Button
         android:id="@+id/viewAuthorInfo"
-        android:layout_width="150dp"
+        android:layout_width="140dp"
         android:layout_height="47dp"
         android:layout_marginTop="8dp"
         android:text="O Autorach"

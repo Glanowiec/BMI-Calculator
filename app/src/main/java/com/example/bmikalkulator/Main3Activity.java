@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Main3Activity extends AppCompatActivity {
 
+    //Try of use own url with WebView, and try to contact between Activities.
     WebView myBrowser;
 
     @Override

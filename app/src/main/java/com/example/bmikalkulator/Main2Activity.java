@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Main2Activity extends AppCompatActivity {
 
+    //Shows html file placed in assets folder
     WebView myBrowser;
 
     @Override

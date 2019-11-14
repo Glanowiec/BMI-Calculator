@@ -2,7 +2,9 @@ package com.example.bmikalkulator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,21 +12,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.security.PublicKey;
-
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity{
 
     private Button bmiCalculation;
     private Button viewBmiInfo;
     private Button viewAuthor;
     private Button search;
-    private EditText editText;
+
+    //Shared preferences addition
+    private static final String MEMORY = "Memory";
+    private static final String HEIGHT = "Height";
+    private static final String WEIGHT = "Weight";
+    private static final String BMI = "BMI";
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPreferences = getSharedPreferences(MEMORY, Activity.MODE_PRIVATE);
 
         //On click BMI calculation
         bmiCalculation = (Button) findViewById(R.id.calculateBMI);
@@ -34,13 +42,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         viewBmiInfo = (Button) findViewById(R.id.viewBMIInfo);
         viewBmiInfo.setOnClickListener(view -> viewBmiInfo(view));
 
-        //
+        //On click - Open new Activity with WebView - In WebView we are using html file
         viewAuthor = (Button) findViewById(R.id.viewAuthorInfo);
-        viewAuthor.setOnClickListener(view -> openActivity2());
+        viewAuthor.setOnClickListener(view -> viewAuthorInfo());
 
-
+        //On click - Open new Activity with WebView - In WebView we are using google url to search
         search = (Button) findViewById(R.id.search);
-        search.setOnClickListener(view -> openActivity3());
+        search.setOnClickListener(view -> viewSearchResults());
     }
 
 
@@ -75,21 +83,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 resultField.setText("NiedowagaTwoje BMI: " + Double.toString((int) BMI));
 
             }
+
+        showToast("Zapisano BMI");
         }
     }
 
+    //This method is used to try using browser installed on the phone
     public void viewBmiInfo(View view){
         Intent viewBmiIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pl.wikipedia.org/wiki/Wska%C5%BAnik_masy_cia%C5%82a"));
         startActivity(viewBmiIntent);
     }
+
     //Activity is a screen in android app
     //Opening screen with webview
-    public void openActivity2(){
+    public void viewAuthorInfo(){
         Intent activity2Intent = new Intent(this, Main2Activity.class);
         startActivity(activity2Intent);
     }
 
-    public void openActivity3(){
+    //Opening screen with webview and extra info in intent
+    public void viewSearchResults(){
         EditText searchField = findViewById(R.id.searchField);
         String searchUrl = "https://www.google.com/search?q=" + searchField.getText().toString() + "&cad=h";
         Intent activity3Intent = new Intent(this, Main3Activity.class);
@@ -97,8 +110,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(activity3Intent);
     }
 
-    @Override
-    public void onClick(View v) {
+    //Saving to shared preferences
+    private void saveBmiData(String height, String weight, String bmi){
+        SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
+        sharedPreferencesEditor.putString(HEIGHT, height);
+        sharedPreferencesEditor.putString(WEIGHT, weight);
+        sharedPreferencesEditor.putString(BMI, bmi);
+        sharedPreferencesEditor.commit();
+    }
 
+    //Show toast with message
+    private void showToast(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
