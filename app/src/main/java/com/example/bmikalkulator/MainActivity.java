@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private Button bmiCalculation;
     private Button viewBmiInfo;
@@ -52,14 +52,13 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-
     public void calculateBmi(View view) {
         EditText heightField = findViewById(R.id.heightField);
         EditText weightField = findViewById(R.id.weightField);
         TextView resultField = findViewById(R.id.resultField);
 
 
-        if(heightField.getText().toString().isEmpty() || weightField.getText().toString().isEmpty()){
+        if (heightField.getText().toString().isEmpty() || weightField.getText().toString().isEmpty()) {
             resultField.setTextColor(Color.RED);
             resultField.setText("Podaj poprawne wartości");
         } else {
@@ -84,25 +83,25 @@ public class MainActivity extends AppCompatActivity{
 
             }
 
-        showToast("Zapisano BMI");
+            showToast("Zapisano BMI");
         }
     }
 
     //This method is used to try using browser installed on the phone
-    public void viewBmiInfo(View view){
+    public void viewBmiInfo(View view) {
         Intent viewBmiIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pl.wikipedia.org/wiki/Wska%C5%BAnik_masy_cia%C5%82a"));
         startActivity(viewBmiIntent);
     }
 
     //Activity is a screen in android app
     //Opening screen with webview
-    public void viewAuthorInfo(){
+    public void viewAuthorInfo() {
         Intent activity2Intent = new Intent(this, Main2Activity.class);
         startActivity(activity2Intent);
     }
 
     //Opening screen with webview and extra info in intent
-    public void viewSearchResults(){
+    public void viewSearchResults() {
         EditText searchField = findViewById(R.id.searchField);
         String searchUrl = "https://www.google.com/search?q=" + searchField.getText().toString() + "&cad=h";
         Intent activity3Intent = new Intent(this, Main3Activity.class);
@@ -111,7 +110,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     //Saving to shared preferences
-    private void saveBmiData(String height, String weight, String bmi){
+    private void saveBmiData(String height, String weight, String bmi) {
         SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
         sharedPreferencesEditor.putString(HEIGHT, height);
         sharedPreferencesEditor.putString(WEIGHT, weight);
@@ -120,7 +119,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     //Show toast with message
-    private void showToast(String message){
+    private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
