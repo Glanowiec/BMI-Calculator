@@ -19,6 +19,18 @@
         app:layout_constraintBottom_toTopOf="@+id/weightField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameField" />
+
+    <EditText
+        android:id="@+id/nameField"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Imie"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resultField" />
 
     <EditText
@@ -38,7 +50,7 @@
         android:id="@+id/searchField"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="104dp"
         android:ems="10"
         android:hint="Wyszukaj w Google"
         android:inputType="text"
@@ -50,7 +62,7 @@
         android:id="@+id/calculateBMI"
         android:layout_width="207dp"
         android:layout_height="47dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="Oblicz  BMI"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +71,7 @@
     <Button
         android:id="@+id/viewBMIInfo"
         android:layout_width="140dp"
-        android:layout_height="47dp"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="56dp"
         android:layout_marginRight="56dp"
@@ -67,16 +79,26 @@
         app:layout_constraintEnd_toStartOf="@+id/viewAuthorInfo"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calculateBMI" />
+        app:layout_constraintTop_toBottomOf="@+id/viewSavedBmiData" />
 
     <Button
         android:id="@+id/viewAuthorInfo"
         android:layout_width="140dp"
-        android:layout_height="47dp"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
         android:text="O Autorach"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/viewBMIInfo"
+        app:layout_constraintTop_toBottomOf="@+id/viewSavedBmiData" />
+
+    <Button
+        android:id="@+id/viewSavedBmiData"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:text="Zapisane BMI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calculateBMI" />
 
     <Button
@@ -115,7 +137,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:text="Twoje BMI:"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
